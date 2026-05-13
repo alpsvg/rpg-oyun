@@ -31,7 +31,7 @@ export default async function handler(req, res) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "mistralai/mistral-7b-instruct:free",
+                qwen/qwen3-next-80b-a3b-instruct:free
                 messages: messages
             })
         });
