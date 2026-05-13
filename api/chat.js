@@ -5,12 +5,12 @@ export default async function handler(req, res) {
 
     const { mesajGecmisi, oyuncuAdi, sinif, can, altin, maxCan } = req.body;
     
-    // OpenRouter API Şifremizi Vercel'den çekiyoruz
-    const API_KEY = process.env.OPENROUTER_API_KEY; 
+    // Google API Şifremiz
+    const API_KEY = process.env.GEMINI_API_KEY; 
 
     const systemPrompt = `Sen yaratıcı bir Türkçe RPG oyun anlatıcısısın. 
     Kurallar: 
-    1) Her zaman Türkçe yaz ve düzgün bir dilbilgisi kullan.
+    1) Her zaman Türkçe yaz ve kusursuz bir dilbilgisi kullan.
     2) Yanıtlar kısa ve etkileyici olsun (maksimum 120 kelime). 
     3) Her yanıtın sonunda oyuncuya tam olarak 3 numara seçenek sun. 
     4) Oyuncu tehlikeli bir eylem yaparsa yanıtına [CAN:-X] yaz (X: 10-30 arası). 
@@ -24,14 +24,15 @@ export default async function handler(req, res) {
     ];
 
     try {
-        const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+        // Doğrudan Google'ın kendi sunucusuna bağlanıyoruz!
+        const response = await fetch("https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", {
             method: "POST",
             headers: {
                 "Authorization": `Bearer ${API_KEY}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                model: "qwen/qwen-2.5-72b-instruct:free",
+                model: "gemini-1.5-flash", // Hızlı, ücretsiz ve kusursuz Türkçe
                 messages: messages
             })
         });
