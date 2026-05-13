@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yapay Zeka RPG</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="header">
+            <h1>⚔️ AI Destekli RPG</h1>
+            <div id="status-bar">
+                <span id="player-name">Kahraman</span> | <span id="player-class">Savaşçı</span>
+                <br>
+                ❤️ Can: <span id="hp">120/120</span> | 💰 Altın: <span id="gold">50</span> | 📍 Bölüm: <span id="level">1</span>
+            </div>
+        </div>
+        
+        <div id="story-box">
+            <p class="system-text">Macera başlamak üzere... Lütfen bekleyin.</p>
+        </div>
+
+        <div id="input-area">
+            <input type="text" id="action-input" placeholder="Ne yapıyorsun? (Örn: Etrafa bakarım)" autocomplete="off">
+            <button id="send-btn">Gönder</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
